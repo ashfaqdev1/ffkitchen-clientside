@@ -4,8 +4,8 @@ import { setNavigate, openCart } from "./Slices/uiSlice";
 import { fetchProducts } from "./Slices/productSlice"; // 👈 Import async action
 
 // Import Pages & Components
-import Home from "./pages/Home";
-import Products from "./pages/Products";
+import Home from "./Pages/Home";
+import Products from "./Pages/Products";
 import Topbar from "./components/Topbar";
 import Navbar from "./components/Navbar";
 import ProductDetailModal from "./components/ProductDetailModal";
