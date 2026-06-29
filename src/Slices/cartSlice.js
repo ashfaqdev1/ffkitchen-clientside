@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const API_URI = import.meta.env.VITE_API_URI;
 // 1. Define the Async Thunk Action to POST Order Details to Backend API
 export const placeOrder = createAsyncThunk(
   "cart/placeOrder",
   async (orderData, { rejectWithValue, dispatch }) => {
     try {
-      const response = await axios.post("/api/v1/order/place", orderData);
+      const response = await axios.post(
+        `${API_URI}/api/v1/order/place`,
+        orderData,
+      );
 
       // Clear the cart out globally on successful order verification
       dispatch(cartSlice.actions.clearCart());

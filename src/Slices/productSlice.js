@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+const API_URI = import.meta.env.VITE_API_URI;
 
 // 1. Define the Async Thunk Action to Fetch Products from Backend API
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("/api/v1/product/read");
+      const response = await axios.get(`${API_URI}/api/v1/product/read`);
       return response.data.data; // This returns the array of raw database documents
     } catch (error) {
       return rejectWithValue(
