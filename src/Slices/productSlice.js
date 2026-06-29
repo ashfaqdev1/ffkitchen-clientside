@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const API_URI = import.meta.env.VITE_API_URI;
+const API_URI = import.meta.env.VITE_API_URL;
 
 // 1. Define the Async Thunk Action to Fetch Products from Backend API
 export const fetchProducts = createAsyncThunk(
