@@ -8,8 +8,8 @@ export default function Topbar() {
   return (
     <div className="topbar">
       <div className="topbar-left">
-        <a href="tel:+923001234567">📞 +92 300 123 4567</a>
-        <a href="mailto:info@ffkitchen.pk">✉️ info@ffkitchen.pk</a>
+        <a href="tel:+923219999176">📞 +923219999176</a>
+        <a href="mailto:info@ffkitchen.pk">✉️ ffkitchen11@gmail.com</a>
       </div>
       <div className="topbar-right">
         <a href="#" className="social-btn" title="Facebook">

@@ -10,12 +10,12 @@ const customCategories = ["Kitchen Gadgets", "Home Decor", "Kids", "Fashion"];
 
 const catImages = {
   "Kitchen Gadgets":
-    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400&auto=format&fit=crop&q=60",
+    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500&auto=format&fit=crop&q=80",
   "Home Decor":
-    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=400&auto=format&fit=crop&q=60",
-  Kids: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&auto=format&fit=crop&q=60",
+    "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=500&auto=format&fit=crop&q=80",
+  Kids: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=500&auto=format&fit=crop&q=80",
   Fashion:
-    "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&auto=format&fit=crop&q=60",
+    "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&auto=format&fit=crop&q=80",
 };
 
 export default function Home() {
@@ -95,13 +95,20 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CATEGORIES SECTION (ENABLED & UPDATED) */}
+      {/* CATEGORIES SECTION (UPDATED TO SQUARE WITH TEXT OVERLAY) */}
       <section className="section">
         <div className="section-header">
           <h2>Shop by Category</h2>
           <p>Find exactly what you're looking for</p>
         </div>
-        <div className="cats-grid">
+        <div
+          className="cats-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "20px",
+          }}
+        >
           {customCategories.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -110,38 +117,59 @@ export default function Home() {
                 key={cat}
                 onClick={() => handleCategoryClick(cat)}
                 style={{
-                  border: isSelected
-                    ? "2px solid var(--primary, #000)"
-                    : "1px solid #eee",
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "1 / 1", // 🛠️ Makes the card a perfect square
                   borderRadius: "12px",
                   overflow: "hidden",
                   cursor: "pointer",
-                  transition: "transform 0.2s",
-                  boxShadow: isSelected ? "0 4px 12px rgba(0,0,0,0.1)" : "none",
+                  transition: "all 0.3s ease",
+
+                  transform: isSelected ? "scale(0.98)" : "none",
                 }}
               >
-                <div
-                  style={{ width: "100%", height: "140px", overflow: "hidden" }}
-                >
-                  <img
-                    src={catImages[cat]}
-                    alt={cat}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div
-                  className="cat-card-label"
+                {/* Image Container that fills the square */}
+                <img
+                  src={catImages[cat]}
+                  alt={cat}
                   style={{
-                    padding: "12px",
-                    textAlign: "center",
-                    fontWeight: "600",
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover", // 🛠️ Fits image without stretching
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+
+                {/* Dark Semi-Transparent Overlay & Centered White Text */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background: isSelected
+                      ? "rgba(0, 0, 0, 0.4)" // Slightly darker when active
+                      : "rgba(0, 0, 0, 0.3)", // Tint overlay to make white text readable
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "16px",
+                    boxSizing: "border-box",
                   }}
                 >
-                  {cat}
+                  <span
+                    style={{
+                      color: "#ffffff", // 🛠️ White text
+                      fontWeight: "700", // 🛠️ Bold text
+                      fontSize: "22px",
+                      textAlign: "center",
+                      textShadow: "1px 1px 4px rgba(0,0,0,0.6)", // Text safety shadow
+                      letterSpacing: "0.5px",
+                    }}
+                  >
+                    {cat}
+                  </span>
                 </div>
               </div>
             );

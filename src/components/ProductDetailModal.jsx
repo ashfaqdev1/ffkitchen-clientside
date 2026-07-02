@@ -13,7 +13,7 @@ export default function ProductDetailModal() {
   const starsCount = Math.floor(product.rating || 5);
   const starsStr = "★".repeat(starsCount) + "☆".repeat(5 - starsCount);
 
-  const waBusinessNumber = "923001234567";
+  const waBusinessNumber = "923219999176";
   const productName = product.title || product.name || "Product";
 
   const messageText = `Assalam-o-Alaikum FFKITCHEN, I am interested in ordering your "${productName}" (Rs. ${(product.price || 0).toLocaleString()}). Could you tell me if it is in stock?`;

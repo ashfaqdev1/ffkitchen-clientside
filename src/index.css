@@ -985,14 +985,14 @@ h4 {
   background: white;
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 24px 16px;
+  /* padding: 24px 16px; */
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
 }
 .cat-card:hover {
   border-color: var(--clay);
-  background: var(--clay);
+  /* background: var(--clay); */
   color: white;
   transform: translateY(-3px);
   box-shadow: var(--shadow);
